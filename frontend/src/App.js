@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import './App.css';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://fake-news-detector-3llp.onrender.com';
 
 function App() {
   const [text, setText] = useState('');
