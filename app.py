@@ -30,4 +30,4 @@ class FakeNewsAPI:
         text = str(text).lower()
         
         # Remove URLs
-        text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.
+        text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
