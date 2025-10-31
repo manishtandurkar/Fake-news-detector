@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
@@ -13,6 +17,22 @@ body {
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
   min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 @keyframes gradientShift {
@@ -25,6 +45,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 /* Container */
@@ -649,7 +671,9 @@ body {
 .example-text {
   font-size: 0.875rem;
   color: #4b5563;
-  line-height: 1.5;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 /* Footer */
@@ -669,27 +693,34 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 0 0.75rem;
+    padding: 0 1rem;
+  }
+  
+  .hero {
+    padding: 3rem 0;
   }
   
   .hero-title {
     font-size: 2.5rem;
+    letter-spacing: -0.5px;
   }
   
   .hero-description {
     font-size: 1rem;
+    padding: 0 1rem;
   }
   
   .analyzer-card {
-    padding: 1.5rem;
+    padding: 2rem;
     margin: 0 0.5rem;
-    border-radius: 16px;
+    border-radius: 24px;
   }
   
   .card-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+    padding-bottom: 1.25rem;
   }
   
   .card-header h2 {
@@ -698,19 +729,27 @@ body {
   
   .button-group {
     flex-direction: column;
+    gap: 0.75rem;
   }
   
   .btn {
     width: 100%;
+    padding: 1rem 1.5rem;
   }
   
   .probabilities {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
   
   .header-content {
     flex-direction: column;
     text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .result-card {
+    padding: 1.75rem;
   }
 }
 
@@ -724,10 +763,20 @@ body {
   }
   
   .analyzer-card {
-    padding: 1rem;
+    padding: 1.5rem;
+    border-radius: 20px;
   }
   
   .text-input {
-    min-height: 120px;
+    min-height: 130px;
+    padding: 1rem;
+  }
+  
+  .examples-section h3 {
+    font-size: 1.15rem;
+  }
+  
+  .example-card {
+    padding: 1rem;
   }
 }
