@@ -117,14 +117,18 @@ function App() {
         className="header"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
       >
         <div className="container">
           <div className="header-content">
-            <div className="logo">
+            <motion.div 
+              className="logo"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
               <Shield className="logo-icon" />
               <span className="logo-text">TruthGuard</span>
-            </div>
+            </motion.div>
             <div className="header-subtitle">
               <Newspaper className="subtitle-icon" />
               ML-Powered Fake News Detection
@@ -146,7 +150,7 @@ function App() {
               className="hero-title"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 80 }}
             >
               Detect Fake News with AI
             </motion.h1>
@@ -154,7 +158,7 @@ function App() {
               className="hero-description"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 80 }}
             >
               Our trained machine learning model analyzes news articles and headlines using advanced NLP techniques. 
               Powered by scikit-learn and TF-IDF vectorization on the ISOT dataset.
@@ -168,9 +172,9 @@ function App() {
         <div className="container">
           <motion.div 
             className="analyzer-card"
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            initial={{ y: 100, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.8, type: "spring", stiffness: 80 }}
           >
             <div className="card-header">
               <Eye className="card-icon" />
@@ -320,7 +324,10 @@ function App() {
                       key={index}
                       className="example-card"
                       onClick={() => setText(example)}
-                      whileHover={{ scale: 1.02 }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="example-text">
